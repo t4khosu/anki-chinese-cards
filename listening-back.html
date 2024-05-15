@@ -35,7 +35,7 @@
         return result;
     }
 
-    function tryToParseTranslationsToList() {
+    function parseTranslations() {
         const translations = `{{text:定义}}`;
         if (translations[0] !== "{") {
             return;
@@ -63,13 +63,17 @@
         const highlightedHanzi = '<span class="highlighted-character">' + hanzi + '</span>'
 
         const li = document.createElement("li");
-        li.classList.add('hide-bullet-point');
-        li.innerHTML = sound + sentence.replaceAll(hanzi, highlightedHanzi);
+        if (sound) {
+            li.classList.add('hide-bullet-point');
+            li.innerHTML = sound + sentence.replaceAll(hanzi, highlightedHanzi);
+        } else {
+            li.innerHTML = sentence.replaceAll(hanzi, highlightedHanzi);
+        }
         document.getElementById("examples").appendChild(li);
     }
 
     hideAdditionalInfoIfNotSet();
-    tryToParseTranslationsToList();
+    parseTranslations();
     fixNbsp(document.getElementById("translations"));
     appendExample(`{{例子}}`, `{{听力}}`);
     appendExample(`{{例子2}}`, `{{听力2}}`);
