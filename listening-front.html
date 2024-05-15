@@ -1,0 +1,41 @@
+<div class="translate">
+    <div class="card-container card-color">
+        <div class="description-container">
+            <span class="description">Translate</span>
+        </div>
+        <div class="character-container">{{text:汉字}}</div>
+        <div class="pinyin-container">
+            <span id="pinyin" class="pinyin" onclick="togglePinyin()">Pinyin</span>
+        </div>
+        <hr class="head-split">
+        <ul class="examples-container" id="examples"></ul>
+    </div>
+</div>
+
+<script>
+    function togglePinyin() {
+        document.getElementById("pinyin").textContent = `{{text:拼音}}`;
+    }
+
+    function appendExample(sentence, sound) {
+        if (sentence === "") {
+            return;
+        }
+
+        const hanzi = "{{text:汉字}}";
+        const highlightedHanzi = '<span class="highlighted-character">' + hanzi + '</span>'
+
+        const li = document.createElement("li");
+        if (sound) {
+            li.classList.add('hide-bullet-point');
+            li.innerHTML = sound;
+        } else {
+            li.innerHTML = sentence.replaceAll(hanzi, highlightedHanzi);
+        }
+
+        document.getElementById("examples").appendChild(li);
+    }
+
+    appendExample(`{{例子}}`, `{{听力}}`);
+    appendExample(`{{例子2}}`, `{{听力2}}`);
+</script>
