@@ -4,19 +4,12 @@
             <span class="description">Translate</span>
         </div>
         <div class="character-container">{{text:汉字}}</div>
-        <div class="pinyin-container">
-            <span id="pinyin" class="pinyin" onclick="togglePinyin()">Pinyin</span>
-        </div>
         <hr class="head-split">
         <ul class="examples-container" id="examples"></ul>
     </div>
 </div>
 
 <script>
-    function togglePinyin() {
-        document.getElementById("pinyin").textContent = `{{text:拼音}}`;
-    }
-
     function appendExample(sentence, sound) {
         if (sentence === "") {
             return;
