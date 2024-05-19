@@ -51,10 +51,7 @@
         }
 
         const li = document.createElement("li");
-        const hanzi = `{{汉字}}`;
-        const highlightedHanzi = '<span class="highlighted-character">' + hanzi + '</span>';
-
-        li.innerHTML = example.replaceAll(hanzi, highlightedHanzi);
+        li.innerHTML = example;
         document.getElementById("examples").appendChild(li);
     }
 
