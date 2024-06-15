@@ -8,6 +8,7 @@
         <div class="pinyin-container">
             <span id="pinyin" class="pinyin" onClick="showPinyin()">Pinyin</span>
         </div>
+        <ul class="examples-container" id="examples"></ul>
         <div class="image-container">{{图片}}</div>
     </div>
 </div>
@@ -39,6 +40,19 @@
         document.getElementById("translations").innerHTML = jsonToHtmlList(parsed);
     }
 
+    function appendExample(example) {
+        if (example === "") {
+            return;
+        }
+
+        const replacement = '__ '.repeat(`{{text:汉字}}`.length);
+        example = example.replace(`{{text:汉字}}`, " " + replacement)
+
+        const li = document.createElement("li");
+        li.innerHTML = example;
+        document.getElementById("examples").appendChild(li);
+    }
+
     function showPinyin() {
         document.getElementById("pinyin").textContent = "{{text:拼音}}";
     }
@@ -56,4 +70,6 @@
     fixNbsp(document.getElementById("translations"));
     showNumberOfCharacters();
     tryToParseTranslationsToList();
+    appendExample(`{{例子}}`);
+    appendExample(`{{例子2}}`);
 </script>
