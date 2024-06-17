@@ -46,7 +46,7 @@
         }
 
         const replacement = '__ '.repeat(`{{text:汉字}}`.length);
-        example = example.replace(`{{text:汉字}}`, " " + replacement)
+        example = example.replaceAll(`{{text:汉字}}`, " " + replacement)
 
         const li = document.createElement("li");
         li.innerHTML = example;
