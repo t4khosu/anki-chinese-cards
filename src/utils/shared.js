@@ -1,4 +1,5 @@
 import {ADDITIONAL_INFORMATION, HANZI, TRANSLATIONS} from "./fields";
+import CharacterCounter from "./CharacterCounter";
 
 function jsonToHtmlList(obj) {
     let result = '<ul>';
@@ -29,7 +30,7 @@ function replaceNbspWithSpaces(element) {
 }
 
 function showNumberOfCharacters() {
-    const numCharacters = HANZI.length;
+    const numCharacters = CharacterCounter(HANZI);
     const term = numCharacters === 1 ? "Character" : "Characters";
     document.getElementById("numCharacters").innerHTML = `${numCharacters} ${term}`;
 }
@@ -73,7 +74,6 @@ function appendExample(example, sound, showExample, highlightHanzi, hideHanzi) {
 }
 
 export {
-    jsonToHtmlList,
     showAdditionalInfoDivIfDefined,
     replaceNbspWithSpaces,
     showNumberOfCharacters,
