@@ -24,7 +24,7 @@ function showAdditionalInfoDivIfDefined() {
     document.getElementById("info").style.display = "none";
 }
 
-function fixNbsp(element) {
+function replaceNbspWithSpaces(element) {
     element.innerHTML = element.innerHTML.replaceAll("&nbsp;", " ");
 }
 
@@ -43,47 +43,40 @@ function tryToParseTranslationsToList() {
     document.getElementById("translations").innerHTML = jsonToHtmlList(parsed);
 }
 
-function appendExampleFront(sentence, sound) {
-    if (sentence === "") {
+function appendExample(example, sound, showExample, highlightHanzi, hideHanzi) {
+    if (example === "") {
         return;
     }
 
-    const hanzi = "{{text:汉字}}";
-    const highlightedHanzi = '<span class="highlighted-character">' + hanzi + '</span>'
+    let displayedHanzi = HANZI;
+
+    if (hideHanzi) {
+        displayedHanzi = '__ '.repeat(HANZI.length);
+    }
+
+    if (highlightHanzi) {
+        displayedHanzi = '<span class="highlighted-character">' + displayedHanzi + '</span>'
+    }
 
     const li = document.createElement("li");
     if (sound) {
         li.classList.add('hide-bullet-point');
         li.innerHTML = sound;
+        if (showExample) {
+            li.innerHTML += example.replaceAll(HANZI, displayedHanzi);
+        }
     } else {
-        li.innerHTML = sentence.replaceAll(hanzi, highlightedHanzi);
+        li.innerHTML = example.replaceAll(HANZI, displayedHanzi);
     }
 
-    document.getElementById("examples").appendChild(li);
-}
-
-function appendExampleBack(sentence, sound) {
-    if (sentence === "") return;
-
-    const hanzi = "{{text:汉字}}";
-    const highlightedHanzi = '<span class="highlighted-character">' + hanzi + '</span>'
-
-    const li = document.createElement("li");
-    if (sound) {
-        li.classList.add('hide-bullet-point');
-        li.innerHTML = sound + sentence.replaceAll(hanzi, highlightedHanzi);
-    } else {
-        li.innerHTML = sentence.replaceAll(hanzi, highlightedHanzi);
-    }
     document.getElementById("examples").appendChild(li);
 }
 
 export {
     jsonToHtmlList,
     showAdditionalInfoDivIfDefined,
-    fixNbsp,
+    replaceNbspWithSpaces,
     showNumberOfCharacters,
     tryToParseTranslationsToList,
-    appendExampleFront,
-    appendExampleBack
+    appendExample
 };

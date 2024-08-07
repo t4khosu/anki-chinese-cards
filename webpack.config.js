@@ -16,25 +16,25 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/cards/listening-front.html',
+            template: './src/templates/listening-front.html',
             filename: 'listening-front.html',
             inject: 'body',
             chunks: ['listeningFront'],
         }),
         new HtmlWebpackPlugin({
-            template: './src/cards/listening-back.html',
+            template: './src/templates/listening-back.html',
             filename: 'listening-back.html',
             inject: 'body',
             chunks: ['listeningBack'],
         }),
         new HtmlWebpackPlugin({
-            template: './src/cards/writing-back.html',
+            template: './src/templates/writing-back.html',
             filename: 'writing-back.html',
             inject: 'body',
             chunks: ['writingBack'],
         }),
         new HtmlWebpackPlugin({
-            template: './src/cards/writing-front.html',
+            template: './src/templates/writing-front.html',
             filename: 'writing-front.html',
             inject: 'body',
             chunks: ['writingFront'],

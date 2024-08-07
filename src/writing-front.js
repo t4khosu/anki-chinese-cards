@@ -1,8 +1,7 @@
 import {EXAMPLE_1, EXAMPLE_2, HANZI} from "./fields";
-import {fixNbsp, showNumberOfCharacters, tryToParseTranslationsToList} from "./shared";
+import {appendExample, replaceNbspWithSpaces, showNumberOfCharacters, tryToParseTranslationsToList} from "./shared";
 
-
-function appendExample(example) {
+function appendExample2(example) {
     if (example === "") {
         return;
     }
@@ -16,8 +15,8 @@ function appendExample(example) {
 }
 
 
-fixNbsp(document.getElementById("translations"));
+replaceNbspWithSpaces(document.getElementById("translations"));
 showNumberOfCharacters();
 tryToParseTranslationsToList();
-appendExample(EXAMPLE_1);
-appendExample(EXAMPLE_2);
+appendExample(EXAMPLE_1, null, true, false, true);
+appendExample(EXAMPLE_2, null, true, false, true);
