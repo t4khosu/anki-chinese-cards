@@ -1,10 +1,10 @@
-import {EXAMPLE_1, EXAMPLE_2, LISTENING_1, LISTENING_2} from "./fields";
+import {EXAMPLE_1, EXAMPLE_2, LISTENING_1, LISTENING_2} from "./utils/fields";
 import {
     appendExample,
     replaceNbspWithSpaces,
     showAdditionalInfoDivIfDefined,
     tryToParseTranslationsToList
-} from "./shared";
+} from "./utils/shared";
 
 
 showAdditionalInfoDivIfDefined();

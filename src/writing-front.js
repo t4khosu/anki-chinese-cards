@@ -1,5 +1,10 @@
-import {EXAMPLE_1, EXAMPLE_2, HANZI} from "./fields";
-import {appendExample, replaceNbspWithSpaces, showNumberOfCharacters, tryToParseTranslationsToList} from "./shared";
+import {EXAMPLE_1, EXAMPLE_2, HANZI} from "./utils/fields";
+import {
+    appendExample,
+    replaceNbspWithSpaces,
+    showNumberOfCharacters,
+    tryToParseTranslationsToList
+} from "./utils/shared";
 
 function appendExample2(example) {
     if (example === "") {

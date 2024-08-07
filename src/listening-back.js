@@ -3,8 +3,8 @@ import {
     replaceNbspWithSpaces,
     showAdditionalInfoDivIfDefined,
     tryToParseTranslationsToList,
-} from "./shared";
-import {EXAMPLE_1, EXAMPLE_2, LISTENING_1, LISTENING_2} from "./fields";
+} from "./utils/shared";
+import {EXAMPLE_1, EXAMPLE_2, LISTENING_1, LISTENING_2} from "./utils/fields";
 
 showAdditionalInfoDivIfDefined();
 tryToParseTranslationsToList();
