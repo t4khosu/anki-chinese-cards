@@ -5,12 +5,16 @@
         </div>
         <div class="translation-container" id="translations">{{定义}}</div>
         <div class="syllables-container" id="numCharacters">{{定义}}</div>
-        <div class="pinyin-container">
-            <span id="pinyin" class="pinyin" onClick="showPinyin()">Pinyin</span>
+        <div class="pinyin-container" onClick="showPinyin()">
+            <span id="pinyin" class="pinyin">Pinyin</span>
         </div>
         <ul class="examples-container" id="examples"></ul>
         <div class="image-container">{{图片}}</div>
     </div>
 </div>
-
+<script>
+    function showPinyin() {
+        document.getElementById("pinyin").innerHTML = "{{拼音}}";
+    }
+</script>
 <script src="../writing-front.js"></script>

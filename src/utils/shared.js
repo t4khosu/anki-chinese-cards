@@ -1,5 +1,6 @@
 import {ADDITIONAL_INFORMATION, HANZI, TRANSLATIONS} from "./fields";
 import CharacterCounter from "./CharacterCounter";
+import DailyShuffler from "./DailyShuffler";
 
 function jsonToHtmlList(obj) {
     let result = '<ul>';
@@ -41,7 +42,15 @@ function tryToParseTranslationsToList() {
     }
 
     const parsed = JSON.parse(TRANSLATIONS);
-    document.getElementById("translations").innerHTML = jsonToHtmlList(parsed);
+    const keys = Object.keys(parsed);
+    const shuffledKeys = DailyShuffler(keys);
+
+    const shuffledJson = {};
+    shuffledKeys.forEach(k => {
+        shuffledJson[k] = parsed[k];
+    })
+
+    document.getElementById("translations").innerHTML = jsonToHtmlList(shuffledJson);
 }
 
 function appendExample(example, sound, showExample, highlightHanzi, hideHanzi) {
