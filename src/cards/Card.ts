@@ -1,12 +1,6 @@
 import ChineseVocabularyCardFields from "./chineseVocabularyCards/ChineseVocabularyCardFields";
 
 abstract class Card {
-    protected fields: ChineseVocabularyCardFields;
-
-    constructor(fields: ChineseVocabularyCardFields) {
-        this.fields = fields;
-    }
-
     public renderFront() {
         try {
             this.renderFrontCore();

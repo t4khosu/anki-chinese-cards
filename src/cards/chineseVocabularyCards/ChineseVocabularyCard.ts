@@ -1,6 +1,7 @@
 import Example from "./Example";
 import Card from "../Card";
 import shuffle from "../../utils/shuffle";
+import ChineseVocabularyCardFields from "./ChineseVocabularyCardFields";
 
 enum ExampleMode {
     HIDE_SENTENCE,
@@ -10,6 +11,13 @@ enum ExampleMode {
 }
 
 abstract class ChineseVocabularyCard extends Card {
+    protected fields: ChineseVocabularyCardFields;
+
+    constructor(fields: ChineseVocabularyCardFields) {
+        super();
+        this.fields = fields;
+    }
+
     protected appendExamples(mode: ExampleMode, showSound: boolean) {
         const example1: Example = {
             sentence: this.fields.exampleSentence1,
