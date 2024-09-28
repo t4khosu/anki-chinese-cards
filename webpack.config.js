@@ -4,10 +4,21 @@ const HtmlInlineScriptPlugin = require('html-inline-script-webpack-plugin');
 
 module.exports = {
     entry: {
-        listeningFront: './src/listening-front.js',
-        listeningBack: './src/listening-back.js',
-        writingFront: './src/writing-front.js',
-        writingBack: './src/writing-back.js',
+        listeningFront: './src/listening-front.ts',
+        listeningBack: './src/listening-back.ts',
+        writingFront: './src/writing-front.ts',
+        writingBack: './src/writing-back.ts',
+        compareFront: './src/compare-front.ts',
+        compareBack: './src/compare-back.ts',
+    },
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+        ],
     },
     output: {
         filename: '[name].bundle.js',
@@ -39,6 +50,18 @@ module.exports = {
             inject: 'body',
             chunks: ['writingFront'],
         }),
+        new HtmlWebpackPlugin({
+            template: './src/templates/compare-front.html',
+            filename: 'compare-front.html',
+            inject: 'body',
+            chunks: ['compareFront'],
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/templates/compare-front.html',
+            filename: 'compare-back.html',
+            inject: 'body',
+            chunks: ['compareBack'],
+        }),
 
         new HtmlInlineScriptPlugin(),
     ],
@@ -46,5 +69,8 @@ module.exports = {
         minimize: false,
         splitChunks: false, // Prevents code splitting for inlining
         removeEmptyChunks: false,
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
     },
 };
