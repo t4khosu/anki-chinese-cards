@@ -43,6 +43,13 @@ abstract class ChineseVocabularyCard extends Card {
         }
     }
 
+    protected hideCountWordsIfUndefined() {
+        if (!this.fields.countwords) {
+            const infoElement = document.getElementById("countwords");
+            infoElement.style.display = "none";
+        }
+    }
+
     protected parseTranslations() {
         const translationsElement = document.getElementById("translations");
 

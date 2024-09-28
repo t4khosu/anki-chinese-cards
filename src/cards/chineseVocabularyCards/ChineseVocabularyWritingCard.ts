@@ -10,6 +10,7 @@ class ChineseVocabularyWritingCard extends ChineseVocabularyCard {
 
     protected renderBackCore(): void {
         this.hideInfoIfUndefined();
+        this.hideCountWordsIfUndefined();
         this.parseTranslations();
         this.appendExamples(ExampleMode.SHOW_SENTENCE_SHOW_HANZI, true);
     }

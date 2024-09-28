@@ -11,7 +11,8 @@ class ChineseVocabularyCardBuilder {
             exampleSentence2: `{{text:例子2}}`,
             exampleListeningRef2: `{{听力2}}`,
             additionalInformation: `{{text:额外消息}}`,
-            translations: `{{text:定义}}`
+            translations: `{{text:定义}}`,
+            countwords: `{{text:量词}}`
         };
     }
 

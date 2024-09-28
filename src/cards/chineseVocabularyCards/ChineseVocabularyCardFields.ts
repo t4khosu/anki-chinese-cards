@@ -6,6 +6,7 @@ interface ChineseVocabularyCardFields {
     exampleListeningRef1: string
     exampleListeningRef2: string
     additionalInformation: string
+    countwords: string
 }
 
 export default ChineseVocabularyCardFields;
