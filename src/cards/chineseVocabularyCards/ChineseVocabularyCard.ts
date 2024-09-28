@@ -67,23 +67,30 @@ abstract class ChineseVocabularyCard extends Card {
             shuffledJson[k] = parsed[k];
         })
 
-        translationsElement.innerHTML = this.jsonToHtmlList(shuffledJson);
+        const ul = this.jsonToHtmlList(shuffledJson);
+        if (ul.children.length === 1) {
+            ul.children[0].classList.add('hide-bullet-point');
+        }
+
+        translationsElement.append(ul);
     }
 
-    private jsonToHtmlList(obj: object) {
-        let result = '<ul>';
+    private jsonToHtmlList(obj: object): HTMLElement {
+        const ul = document.createElement("ul");
 
         Object.entries(obj).forEach(([key, val]) => {
+            const li = document.createElement("li");
             if (val !== null && typeof val == 'object' && !Array.isArray(val)) {
-                result += `<li>[${key}]</li>`
-                result += this.jsonToHtmlList(val);
+                li.innerText = `[${key}]`
+                ul.append(li);
+                ul.append(this.jsonToHtmlList(val));
             } else {
-                result += `<li>[${key}] ${val?.join(", ")}</li>`
+                li.innerText = `[${key}] ${val?.join(", ")}`
+                ul.append(li);
             }
         });
 
-        result += '</ul>';
-        return result;
+        return ul;
     }
 
     private createExampleSentenceListElement(example: Example, mode: ExampleMode, showSound: boolean): HTMLElement {
