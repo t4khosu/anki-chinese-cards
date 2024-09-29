@@ -62,7 +62,7 @@ abstract class ChineseVocabularyCard extends Card {
         const translationsElement = document.getElementById("translations");
 
         if (this.fields.translations[0] !== "{") {
-            translationsElement.innerHTML = translationsElement.innerHTML.split("&nbsp;").join(" ");
+            translationsElement.innerHTML = this.fields.translations.split("&nbsp;").join(" ");
             return;
         }
 
