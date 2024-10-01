@@ -60,13 +60,15 @@ abstract class ChineseVocabularyCard extends Card {
 
     protected parseTranslations() {
         const translationsElement = document.getElementById("translations");
+        let translations = this.fields.translations.split("&nbsp;").join(" ");
 
         if (this.fields.translations[0] !== "{") {
-            translationsElement.innerHTML = this.fields.translations.split("&nbsp;").join(" ");
+            translationsElement.innerHTML = translations;
             return;
         }
 
-        const parsed = JSON.parse(this.fields.translations);
+        translations = translations.split('<br>').join(' ')
+        const parsed = JSON.parse(translations);
         const keys: string[] = Object.keys(parsed);
         const shuffledKeys = shuffle<string>(keys, new Date());
 
@@ -104,7 +106,7 @@ abstract class ChineseVocabularyCard extends Card {
     private createExampleSentenceListElement(example: Example, mode: ExampleMode, showSound: boolean): HTMLElement {
         const li = document.createElement("li");
 
-        if (showSound) {
+        if (showSound && example.soundRef) {
             li.classList.add('hide-bullet-point');
             li.innerHTML += example.soundRef;
         }
