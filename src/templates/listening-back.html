@@ -1,21 +1,23 @@
-<div class="translate">
-    <div class="card-container card-color">
-        <div id="error"></div>
-        <div class="description-container">
-            <span class="description">Translate</span>
-        </div>
-        <div class="character-container">{{text:汉字}} <span id="countwords"
-                                                             class="countwords-container">({{量词}})</span></div>
-        <div class="pinyin-container">
-            <span id="pinyin">{{text:拼音}}</span>
-        </div>
-        <div class="translation-container" id="translations"></div>
-        <div id="info" class="info-container">
-            <div style="margin-right: 10px">💡</div>
-            <div>{{额外消息}}</div>
-        </div>
-        <hr class="head-split">
-        <ul class="examples-container" id="examples"></ul>
-        <div class="image-container">{{图片}}</div>
+<div class="my-card red-theme">
+    <div id="error"></div>
+    <div class="text-left">
+        <span class="description">Listening</span>
     </div>
+    <div class="mt-2">
+        <span class="font-3xl">{{text:汉字}}</span>
+        <span id="countwords" class="font-md">({{text:量词}})</span>
+    </div>
+    <div class="font-md mt-2">
+        <span id="pinyin">{{text:拼音}}</span>
+    </div>
+    <div id="translations" class="font-lg mt-3"></div>
+    <div id="info" class="info-container">
+        <div class="mr-2">💡</div>
+        <div>{{额外消息}}</div>
+    </div>
+    <hr>
+    <div class="mt-4 mb-3 font-lg">
+        <ul id="examples"></ul>
+    </div>
+    <div class="image-container">{{图片}}</div>
 </div>

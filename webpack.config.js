@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlInlineScriptPlugin = require('html-inline-script-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -11,7 +12,7 @@ module.exports = {
         writingBack: './src/writing-back.ts',
         compareFront: './src/compare-front.ts',
         compareBack: './src/compare-back.ts',
-        styles: './src/style/styles.scss',
+        vocabularyCardStyles: './src/style/vocabulary-card-styles.scss',
     },
     module: {
         rules: [

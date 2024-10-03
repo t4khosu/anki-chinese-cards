@@ -139,7 +139,7 @@ abstract class ChineseVocabularyCard extends Card {
     }
 
     private showSentenceHighlightHanzi(example: Example, li: HTMLElement): HTMLElement {
-        const highlightedSpan = '<span class="highlighted-character">' + example.hanzi + '</span>'
+        const highlightedSpan = '<span class="font-bold">' + example.hanzi + '</span>'
         li.innerHTML += example.sentence.split(example.hanzi).join(highlightedSpan);
         return li;
     }
