@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlInlineScriptPlugin = require('html-inline-script-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
@@ -10,6 +11,7 @@ module.exports = {
         writingBack: './src/writing-back.ts',
         compareFront: './src/compare-front.ts',
         compareBack: './src/compare-back.ts',
+        styles: './src/style/styles.scss',
     },
     module: {
         rules: [
@@ -21,12 +23,9 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
-                    // Translates CSS into CommonJS
-                    "css-loader",
-                    // Compiles Sass to CSS
-                    "sass-loader",
+                    MiniCssExtractPlugin.loader, // Extracts CSS into a separate file
+                    'css-loader', // Translates CSS into CommonJS
+                    'sass-loader', // Compiles Sass to CSS
                 ],
             },
         ],
@@ -72,6 +71,10 @@ module.exports = {
             filename: 'compare-back.html',
             inject: 'body',
             chunks: ['compareBack'],
+        }),
+
+        new MiniCssExtractPlugin({
+            filename: '[name].css', // The name of the extracted CSS file
         }),
 
         new HtmlInlineScriptPlugin(),
