@@ -6,6 +6,11 @@ class ChineseVocabularyWritingCard extends ChineseVocabularyCard {
         this.showNumberOfCharacters();
         this.parseTranslations();
         this.appendExamples(ExampleMode.SHOW_SENTENCE_HIDE_HANZI, false);
+
+        const pinyinElement = document.getElementById("pinyin");
+        pinyinElement.onclick = () => {
+            pinyinElement.innerHTML = "{{拼音}}";
+        }
     }
 
     protected renderBackCore(): void {
