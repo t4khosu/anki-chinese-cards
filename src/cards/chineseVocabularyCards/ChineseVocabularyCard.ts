@@ -1,7 +1,7 @@
 import Example from "./Example";
 import Card from "../Card";
-import shuffle from "../../utils/shuffle";
 import ChineseVocabularyCardFields from "./ChineseVocabularyCardFields";
+import parseTranslationsToUList from "../../utils/parseTranslationsToUList";
 
 enum ExampleMode {
     HIDE_SENTENCE,
@@ -60,47 +60,15 @@ abstract class ChineseVocabularyCard extends Card {
 
     protected parseTranslations() {
         const translationsElement = document.getElementById("translations");
-        let translations = this.fields.translations.split("&nbsp;").join(" ");
+        let cleanTranslationsFieldContent = this.fields.translations.split("&nbsp;").join(" ");
 
-        if (this.fields.translations[0] !== "{") {
-            translationsElement.innerHTML = translations;
+        if (cleanTranslationsFieldContent[0] !== "{") {
+            translationsElement.innerHTML = cleanTranslationsFieldContent;
             return;
         }
 
-        translations = translations.split('<br>').join(' ')
-        const parsed = JSON.parse(translations);
-        const keys: string[] = Object.keys(parsed);
-        const shuffledKeys = shuffle<string>(keys, new Date());
-
-        const shuffledJson: any = {};
-        shuffledKeys.forEach(k => {
-            shuffledJson[k] = parsed[k];
-        })
-
-        const ul = this.jsonToHtmlList(shuffledJson);
-        if (ul.children.length === 1) {
-            ul.children[0].classList.add('hide-bullet-point');
-        }
-
-        translationsElement.append(ul);
-    }
-
-    private jsonToHtmlList(obj: object): HTMLElement {
-        const ul = document.createElement("ul");
-
-        Object.entries(obj).forEach(([key, val]) => {
-            const li = document.createElement("li");
-            if (val !== null && typeof val == 'object' && !Array.isArray(val)) {
-                li.innerText = `[${key}]`
-                ul.append(li);
-                ul.append(this.jsonToHtmlList(val));
-            } else {
-                li.innerText = `[${key}] ${val?.join(", ")}`
-                ul.append(li);
-            }
-        });
-
-        return ul;
+        const parsedTranslationsUListElement = parseTranslationsToUList(cleanTranslationsFieldContent);
+        translationsElement.append(parsedTranslationsUListElement);
     }
 
     private createExampleSentenceListElement(example: Example, mode: ExampleMode, showSound: boolean): HTMLElement {

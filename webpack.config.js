@@ -13,6 +13,7 @@ module.exports = {
         compareFront: './src/compare-front.ts',
         compareBack: './src/compare-back.ts',
         vocabularyCardStyles: './src/style/vocabulary-card-styles.scss',
+        compareCardStyles: './src/style/compare-card-styles.scss',
     },
     module: {
         rules: [
@@ -62,20 +63,20 @@ module.exports = {
             chunks: ['writingFront'],
         }),
         new HtmlWebpackPlugin({
-            template: './src/templates/compare-front.html',
+            template: './src/templates/compare.html',
             filename: 'compare-front.html',
             inject: 'body',
             chunks: ['compareFront'],
         }),
         new HtmlWebpackPlugin({
-            template: './src/templates/compare-front.html',
+            template: './src/templates/compare.html',
             filename: 'compare-back.html',
             inject: 'body',
             chunks: ['compareBack'],
         }),
 
         new MiniCssExtractPlugin({
-            filename: '[name].css', // The name of the extracted CSS file
+            filename: '[name].css',
         }),
 
         new HtmlInlineScriptPlugin(),

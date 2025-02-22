@@ -1,7 +1,7 @@
-@import 'card';
-@import 'text';
-@import 'spacing';
-@import 'themes';
+@import 'parts/card';
+@import 'parts/text';
+@import 'parts/spacing';
+@import 'parts/themes';
 
 .button {
   border: 1px solid rgb(0, 0, 0, 0.3);
@@ -13,7 +13,7 @@
   font-weight: bold;
 }
 
-.description {
+.banner {
   font-size: 0.7rem;
   letter-spacing: 2px;
   padding: 3px;

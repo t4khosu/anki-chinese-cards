@@ -12,13 +12,14 @@ class ChineseCompareCard extends Card {
     }
 
     protected renderBackCore(): void {
-        const entries = deserialize<CompareEntry[]>(this.fields.json);
+        const fields = this.fields.json.split('<br>').join(" ");
+        const entries = deserialize<CompareEntry>(fields);
 
         const ol = document.createElement("ol");
 
-        entries.forEach((e: any) => {
+        entries.forEach((e: CompareEntry) => {
             const li = document.createElement("li");
-            li.innerHTML = `<strong>${e.word}</strong> ${e.pinyin}`;
+            li.innerHTML = `<span class="font-xl">${e.word}</span> <span class="font-s">${e.pinyin}</span>`;
 
             const subUl = document.createElement("ul");
 
@@ -26,9 +27,13 @@ class ChineseCompareCard extends Card {
             exampleLi.innerText = e.example;
             subUl.append(exampleLi);
 
-            const transLi = document.createElement("li");
-            transLi.innerText = e.trans;
-            subUl.append(transLi);
+            const translationLi = document.createElement("li");
+            translationLi.innerText = e.translation.join(", ");
+            subUl.append(translationLi);
+
+            const explanationLi = document.createElement("li");
+            explanationLi.innerText = e.explanation;
+            subUl.append(explanationLi);
 
             li.append(subUl)
             ol.appendChild(li);
@@ -39,15 +44,17 @@ class ChineseCompareCard extends Card {
     }
 
     protected renderFrontCore(): void {
-        const entries = deserialize<CompareEntry[]>(this.fields.json);
+        const fields = this.fields.json.split('<br>').join(" ");
+        const entries = deserialize<CompareEntry>(fields);
 
         const ol = document.createElement("ol");
 
-        entries.forEach((e: any) => {
+        entries.forEach((e: CompareEntry) => {
             const li = document.createElement("li");
-            li.innerHTML = `<strong>${e.word}</strong> ${e.pinyin}`;
+            li.innerHTML = `<span class="font-xl">${e.word}</span>`;
 
             const subUl = document.createElement("ul");
+
             const exampleLi = document.createElement("li");
             exampleLi.innerText = e.example;
             subUl.append(exampleLi);

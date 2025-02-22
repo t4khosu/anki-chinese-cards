@@ -1,7 +1,8 @@
 interface CompareEntry {
     word: string;
     pinyin: string;
-    trans: string;
+    translation: string[],
+    explanation: string;
     example: string;
 }
 

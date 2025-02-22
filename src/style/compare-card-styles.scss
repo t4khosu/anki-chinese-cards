@@ -1,0 +1,15 @@
+@import 'parts/card';
+@import 'parts/themes';
+@import 'parts/text';
+@import 'parts/spacing';
+
+#content {
+  line-height: 1.8rem;
+}
+
+.banner {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  padding: 3px;
+  border-radius: 8px;
+}
