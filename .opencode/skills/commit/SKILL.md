@@ -9,7 +9,7 @@ When asked to commit changes, follow these steps strictly:
 
 ## Step 1: Run tests
 
-Run the test suite first. If any tests fail, **stop** and do not commit. Report the failures to the user.
+Run the npm test suite first. If any tests fail, **stop** and do not commit. Report the failures to the user.
 
 ## Step 2: Review changes
 
@@ -46,4 +46,4 @@ Format:
 
 ## Step 4: Commit
 
-Stage the appropriate files and commit with the message. If splitting, repeat steps 3-4 for each logical group of changes.
+Stage the appropriate files display the commit message to the user. Once the user approves the change, commit. If splitting, repeat steps 3-4 for each logical group of changes.
