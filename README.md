@@ -12,7 +12,7 @@ npm ci
 npm run build
 ```
 
-All cards for every note type will be put into `/ditst/`.
+All cards for every note type will be put into `/dist/`.
 
 ## Run Tests
 
