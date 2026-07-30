@@ -6,7 +6,7 @@ import ChineseVocabularyCardFields from "../cards/chineseVocabularyCards/Chinese
 
 const previewFields: ChineseVocabularyCardFields = {
     hanzi: "图书馆",
-    translations: `{"名词": ["library"], "verb": ["to borrow books"], "mw": ["个", "家"], "hint": ["think of a quiet place"]}`,
+    translations: "N: library",
     exampleSentence1: "我每天下午都去图书馆看书。",
     exampleSentence2: "这家图书馆藏书很丰富。",
     exampleListeningRef1: "",
@@ -18,7 +18,7 @@ const previewFields: ChineseVocabularyCardFields = {
 const previewValues: Record<string, string> = {
     "汉字": "图书馆",
     "量词": "个",
-    "拼音": "tú shū guǎn",
+    "拼音": "t2shu1guan3",
     "额外消息": "常用问候语",
 };
 

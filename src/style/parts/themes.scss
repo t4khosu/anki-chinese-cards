@@ -1,10 +1,10 @@
+.nightMode {
+  color: white
+}
+
 .red-theme {
   background-color: rgb(255, 233, 228);
   border-color: rgb(91, 63, 59);
-
-  .banner {
-    background-color: rgba(255, 210, 200);
-  }
 
   hr {
     background-color: rgb(255, 210, 210);
@@ -16,10 +16,6 @@
     background-color: rgb(80, 50, 50);
     border-color: rgb(120, 60, 60);
 
-    .banner {
-      background-color: rgba(40, 10, 10);
-    }
-
     hr {
       background-color: rgb(255, 210, 210);
     }
@@ -29,39 +25,23 @@
 .blue-theme {
   background-color: rgb(195, 220, 255);
   border-color: rgb(15, 12, 190);
-
-  .banner {
-    background-color: rgb(180, 205, 255);
-  }
 }
 
 .nightMode {
   .blue-theme {
     background-color: rgb(60, 60, 90);
     border-color: rgb(100, 100, 205);
-
-    .banner {
-      background-color: rgba(10, 10, 40);
-    }
   }
 }
 
 .green-theme {
   background-color: rgb(238, 250, 238);
   border-color: rgb(90, 180, 90);
-
-  .banner {
-    background-color: rgb(200, 240, 200);
-  }
 }
 
 .nightMode {
   .green-theme {
     background-color: rgb(60, 90, 60);
     border-color: rgb(50, 150, 50);
-
-    .banner {
-      background-color: rgba(30, 60, 30);
-    }
   }
 }
