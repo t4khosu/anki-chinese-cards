@@ -12,7 +12,7 @@ const previewFields: ChineseVocabularyCardFields = {
     exampleListeningRef1: "",
     exampleListeningRef2: "",
     additionalInformation: "图书馆 refers to a public or private library.",
-    countwords: "个"
+    countwords: "个，家"
 };
 
 const previewValues: Record<string, string> = {
@@ -20,7 +20,6 @@ const previewValues: Record<string, string> = {
     "量词": "个",
     "拼音": "tú shū guǎn",
     "额外消息": "常用问候语",
-    "图片": "",
 };
 
 function fillPlaceholders(html: string, values: Record<string, string>): string {
@@ -31,6 +30,14 @@ function fillPlaceholders(html: string, values: Record<string, string>): string 
 }
 
 let currentSide: "front" | "back" = "front";
+let darkMode = false;
+
+function toggleDarkMode() {
+    darkMode = !darkMode;
+    document.documentElement.classList.toggle("nightMode", darkMode);
+    document.body.style.background = darkMode ? "black" : "";
+    render(currentSide);
+}
 
 function render(side: "front" | "back") {
     currentSide = side;
@@ -44,15 +51,26 @@ function render(side: "front" | "back") {
         card.renderBack();
     }
 
-    addToggleButton();
+    const btnContainer = document.createElement("div");
+    btnContainer.style.cssText = "display:flex;gap:0.5rem;justify-content:center;margin-bottom:0.5rem;";
+    btnContainer.append(createToggleButton(), createDarkModeButton());
+    document.body.prepend(btnContainer);
 }
 
-function addToggleButton() {
+function createToggleButton() {
     const btn = document.createElement("button");
     btn.textContent = currentSide === "front" ? "Show Back" : "Show Front";
-    btn.style.cssText = "display:block;margin:1rem auto;padding:0.5rem 1.5rem;font-size:1rem;cursor:pointer;border-radius:0.5rem;border:1px solid #999;";
+    btn.style.cssText = "padding:0.25rem 0.75rem;font-size:0.75rem;cursor:pointer;border-radius:0.25rem;border:1px solid #999;";
     btn.onclick = () => render(currentSide === "front" ? "back" : "front");
-    document.body.prepend(btn);
+    return btn;
+}
+
+function createDarkModeButton() {
+    const btn = document.createElement("button");
+    btn.textContent = darkMode ? "Light Mode" : "Dark Mode";
+    btn.style.cssText = "padding:0.25rem 0.75rem;font-size:0.75rem;cursor:pointer;border-radius:0.25rem;border:1px solid #999;";
+    btn.onclick = toggleDarkMode;
+    return btn;
 }
 
 render("front");
