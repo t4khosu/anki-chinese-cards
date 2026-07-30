@@ -7,7 +7,7 @@
   border-color: rgb(91, 63, 59);
 
   hr {
-    background-color: rgb(255, 210, 210);
+    border-color: rgb(255, 210, 210);
   }
 }
 
@@ -17,20 +17,28 @@
     border-color: rgb(120, 60, 60);
 
     hr {
-      background-color: rgb(255, 210, 210);
+      border-color: rgb(255, 210, 210);
     }
   }
 }
 
 .blue-theme {
   background-color: rgb(195, 220, 255);
-  border-color: rgb(15, 12, 190);
+  border-color: rgb(10, 10, 120);
+
+  hr {
+    border-color: rgb(10, 10, 120);
+  }
 }
 
 .nightMode {
   .blue-theme {
     background-color: rgb(60, 60, 90);
-    border-color: rgb(100, 100, 205);
+    border-color: rgb(110, 110, 215);
+  }
+
+  hr {
+    border-color: rgb(110, 110, 215);
   }
 }
 
