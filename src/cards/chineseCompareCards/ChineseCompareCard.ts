@@ -1,70 +1,61 @@
 import Card from "../Card";
-import deserialize from "../../utils/deserialize";
-import ChineseCompareCardFields from "./ChineseCompareCardFields";
 import CompareEntry from "./CompareEntries";
 
 class ChineseCompareCard extends Card {
-    protected fields: ChineseCompareCardFields;
+    protected fields: { json: string };
 
-    constructor(fields: ChineseCompareCardFields) {
+    constructor(fields: { json: string }) {
         super();
         this.fields = fields;
     }
 
     protected renderBackCore(): void {
-        const fields = this.fields.json.split('<br>').join(" ");
-        const entries = deserialize<CompareEntry>(fields);
-
-        const ol = document.createElement("ol");
-
-        entries.forEach((e: CompareEntry) => {
-            const li = document.createElement("li");
-            li.innerHTML = `<span class="font-xl">${e.word}</span> <span class="font-s">${e.pinyin}</span>`;
-
-            const subUl = document.createElement("ul");
-
-            const exampleLi = document.createElement("li");
-            exampleLi.innerText = e.example;
-            subUl.append(exampleLi);
-
-            const translationLi = document.createElement("li");
-            translationLi.innerText = e.translation.join(", ");
-            subUl.append(translationLi);
-
-            const explanationLi = document.createElement("li");
-            explanationLi.innerText = e.explanation;
-            subUl.append(explanationLi);
-
-            li.append(subUl)
-            ol.appendChild(li);
-        });
-
+        const entries: CompareEntry[] = JSON.parse(this.fields.json.split('<br>').join(" "));
         const content = document.getElementById("content");
-        content.append(ol);
+        content.append(this.renderEntries(entries, { showPinyin: true, showTranslationAndExplanation: true }));
     }
 
     protected renderFrontCore(): void {
-        const fields = this.fields.json.split('<br>').join(" ");
-        const entries = deserialize<CompareEntry>(fields);
+        const entries: CompareEntry[] = JSON.parse(this.fields.json.split('<br>').join(" "));
+        const content = document.getElementById("content");
+        content.append(this.renderEntries(entries, { showPinyin: false, showTranslationAndExplanation: false }));
+    }
 
+    private renderEntries(entries: CompareEntry[], opts: { showPinyin: boolean; showTranslationAndExplanation: boolean }): HTMLOListElement {
         const ol = document.createElement("ol");
 
         entries.forEach((e: CompareEntry) => {
             const li = document.createElement("li");
-            li.innerHTML = `<span class="font-xl">${e.word}</span>`;
+            li.innerHTML = `<span class="font-xl">${e.word}</span>` + (opts.showPinyin ? ` <span class="font-s">${e.pinyin}</span>` : "");
 
-            const subUl = document.createElement("ul");
+            if (opts.showTranslationAndExplanation) {
+                const subUl = document.createElement("ul");
 
-            const exampleLi = document.createElement("li");
-            exampleLi.innerText = e.example;
-            subUl.append(exampleLi);
+                const exampleLi = document.createElement("li");
+                exampleLi.innerText = e.example;
+                subUl.append(exampleLi);
 
-            li.append(subUl)
+                const translationLi = document.createElement("li");
+                translationLi.innerText = e.translation.join(", ");
+                subUl.append(translationLi);
+
+                const explanationLi = document.createElement("li");
+                explanationLi.innerText = e.explanation;
+                subUl.append(explanationLi);
+
+                li.append(subUl);
+            } else {
+                const subUl = document.createElement("ul");
+                const exampleLi = document.createElement("li");
+                exampleLi.innerText = e.example;
+                subUl.append(exampleLi);
+                li.append(subUl);
+            }
+
             ol.appendChild(li);
         });
 
-        const content = document.getElementById("content");
-        content.append(ol);
+        return ol;
     }
 }
 

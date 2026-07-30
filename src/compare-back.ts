@@ -1,3 +1,3 @@
-import ChineseCompareCardBuilder from "./utils/ChineseCompareCardBuilder";
+import ChineseCompareCard from "./cards/chineseCompareCards/ChineseCompareCard";
 
-ChineseCompareCardBuilder.CreateCard().renderBack()
+new ChineseCompareCard({ json: `{{text:Json}}` }).renderBack()

@@ -1,5 +1,3 @@
-declare const PACKAGE_VERSION: string;
-
 import ChineseVocabularyCard, {ExampleMode} from "./ChineseVocabularyCard";
 import countCharacters from "../../utils/countCharacters";
 
@@ -28,11 +26,6 @@ class ChineseVocabularyWritingCard extends ChineseVocabularyCard {
         const numCharacters = countCharacters(this.fields.hanzi);
         const term = numCharacters === 1 ? "Character" : "Characters";
         document.getElementById("numCharacters").innerHTML = `${numCharacters} ${term}`;
-    }
-
-    private showVersion() {
-        const versionElement = document.getElementById("version");
-        versionElement.innerHTML = `v${PACKAGE_VERSION}`;
     }
 }
 

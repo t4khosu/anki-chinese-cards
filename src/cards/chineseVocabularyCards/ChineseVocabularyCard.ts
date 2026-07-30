@@ -10,6 +10,8 @@ enum ExampleMode {
     SHOW_SENTENCE_HIGHLIGHT_HANZI
 }
 
+declare const PACKAGE_VERSION: string;
+
 abstract class ChineseVocabularyCard extends Card {
     protected fields: ChineseVocabularyCardFields;
 
@@ -56,6 +58,11 @@ abstract class ChineseVocabularyCard extends Card {
             const infoElement = document.getElementById("countwords");
             infoElement.style.display = "none";
         }
+    }
+
+    protected showVersion() {
+        const versionElement = document.getElementById("version");
+        versionElement.innerHTML = `v${PACKAGE_VERSION}`;
     }
 
     protected parseTranslations() {

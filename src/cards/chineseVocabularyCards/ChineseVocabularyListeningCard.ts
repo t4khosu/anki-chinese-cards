@@ -1,5 +1,3 @@
-declare const PACKAGE_VERSION: string;
-
 import ChineseVocabularyCard, {ExampleMode} from "./ChineseVocabularyCard";
 
 class ChineseVocabularyListeningCard extends ChineseVocabularyCard {
@@ -15,11 +13,6 @@ class ChineseVocabularyListeningCard extends ChineseVocabularyCard {
         this.hideInfoIfUndefined();
         this.hideCountWordsIfUndefined();
         this.showVersion();
-    }
-
-    private showVersion() {
-        const versionElement = document.getElementById("version");
-        versionElement.innerHTML = `v${PACKAGE_VERSION}`;
     }
 }
 

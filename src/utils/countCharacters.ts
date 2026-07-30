@@ -1,13 +1,4 @@
-const countCharacters = (textWithCharacters: string) => {
-    let count = 0;
-    
-    [...textWithCharacters].forEach(c => {
-        if (c.match(/[\u3400-\u9FBF]/)) {
-            count += 1;
-        }
-    })
-
-    return count;
-}
+const countCharacters = (text: string): number =>
+    (text.match(/[\u3400-\u9FBF]/g) ?? []).length;
 
 export default countCharacters;

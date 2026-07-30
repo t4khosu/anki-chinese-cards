@@ -5,8 +5,7 @@ const parseTranslationsToUList = (translationsFieldContent: string): HTMLUListEl
 
     const translationJson = JSON.parse(cleanTranslationFieldContent);
 
-    const shuffledJson = shuffleJson(translationJson);
-    const sortedJson = sortJson(shuffledJson);
+    const sortedJson = sortJson(shuffleJson(translationJson));
     const ul = jsonToHtmlList(sortedJson);
 
     if (ul.children.length === 1) {
@@ -16,31 +15,15 @@ const parseTranslationsToUList = (translationsFieldContent: string): HTMLUListEl
     return ul;
 }
 
-const shuffleJson = (json: any): object => {
-    const shuffledJsonKeys = shuffle<string>(Object.keys(json), new Date());
+const shuffleJson = (json: any): object =>
+    Object.fromEntries(shuffle(Object.entries(json), new Date()));
 
-    const shuffledJson: any = {};
-    shuffledJsonKeys.forEach(k => {
-        shuffledJson[k] = json[k];
-    })
-
-    return shuffledJson;
-}
-
-const sortJson = (json: any): object => {
-    const sortedKeys = Object.keys(json).sort((a, b) => {
-        if (a === 'mw' || a === 'hint') return 1;
-        if (b === 'mw' || b === 'hint') return -1;
+const sortJson = (json: any): object =>
+    Object.fromEntries(Object.entries(json).sort((a, b) => {
+        if (a[0] === 'mw' || a[0] === 'hint') return 1;
+        if (b[0] === 'mw' || b[0] === 'hint') return -1;
         return 0;
-    });
-
-    const sortedJson: any = {};
-    sortedKeys.forEach(key => {
-        sortedJson[key] = json[key];
-    });
-
-    return sortedJson;
-}
+    }));
 
 const jsonToHtmlList = (obj: object): HTMLUListElement => {
     const ul = document.createElement("ul");
@@ -52,12 +35,13 @@ const jsonToHtmlList = (obj: object): HTMLUListElement => {
             ul.append(li);
             ul.append(jsonToHtmlList(val));
         } else {
+            const joined = (val ?? []).join(", ");
             if (key === "mw") {
-                li.innerHTML = `<i>[${key}] ${val === null || val === void 0 ? void 0 : val.join(", ")}</i>`;
+                li.innerHTML = `<i>[${key}] ${joined}</i>`;
             } else if (key === "hint") {
-                li.innerText = `💡 ${val === null || val === void 0 ? void 0 : val.join(", ")}`;
+                li.innerText = `💡 ${joined}`;
             } else {
-                li.innerText = `[${key}] ${val === null || val === void 0 ? void 0 : val.join(", ")}`;
+                li.innerText = `[${key}] ${joined}`;
             }
             ul.append(li);
         }

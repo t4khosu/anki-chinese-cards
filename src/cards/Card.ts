@@ -1,5 +1,3 @@
-import ChineseVocabularyCardFields from "./chineseVocabularyCards/ChineseVocabularyCardFields";
-
 abstract class Card {
     public renderFront() {
         try {
