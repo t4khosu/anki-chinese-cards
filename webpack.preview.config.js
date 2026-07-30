@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        writingFrontPreview: './src/preview/writing-front-preview.ts',
+        writingPreview: './src/preview/writing-preview.ts',
     },
     module: {
         rules: [
@@ -34,10 +34,10 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Writing Front Preview',
-            filename: 'writing-front-preview.html',
+            title: 'Writing Preview',
+            filename: 'writing-preview.html',
             inject: 'body',
-            chunks: ['writingFrontPreview'],
+            chunks: ['writingPreview'],
         }),
     ],
     resolve: {
@@ -49,6 +49,6 @@ module.exports = {
         },
         hot: true,
         port: 8080,
-        open: ['/writing-front-preview.html'],
+        open: ['/writing-preview.html'],
     },
 };
