@@ -1,5 +1,21 @@
+.button {
+  border: 1px solid rgb(0, 0, 0, 0.3);
+}
+
+.info-container {
+  background-color: rgba(0, 0, 0, 0.11);
+}
+
 .nightMode {
-  color: white
+  color: white;
+
+  .button {
+    border: 1px solid rgb(255, 255, 255, 0.2);
+  }
+
+  .info-container {
+    background-color: rgba(255, 255, 230, 0.2);
+  }
 }
 
 .red-theme {
@@ -7,7 +23,7 @@
   border-color: rgb(91, 63, 59);
 
   hr {
-    border-color: rgb(255, 210, 210);
+    border-color: rgb(255, 210, 210, 0.3);
   }
 }
 
@@ -17,7 +33,7 @@
     border-color: rgb(120, 60, 60);
 
     hr {
-      border-color: rgb(255, 210, 210);
+      border-color: rgb(255, 210, 210, 0.3);
     }
   }
 }
@@ -27,7 +43,7 @@
   border-color: rgb(10, 10, 120);
 
   hr {
-    border-color: rgb(10, 10, 120);
+    border-color: rgb(10, 10, 120, 0.3);
   }
 }
 
@@ -38,7 +54,7 @@
   }
 
   hr {
-    border-color: rgb(110, 110, 215);
+    border-color: rgb(110, 110, 215, 0.3);
   }
 }
 
