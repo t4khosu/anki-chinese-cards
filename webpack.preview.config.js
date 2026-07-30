@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const packageJson = require('./package.json');
 
 module.exports = {
     mode: 'development',
@@ -38,6 +40,9 @@ module.exports = {
             filename: 'writing-preview.html',
             inject: 'body',
             chunks: ['writingPreview'],
+        }),
+        new webpack.DefinePlugin({
+            PACKAGE_VERSION: JSON.stringify(packageJson.version),
         }),
     ],
     resolve: {
