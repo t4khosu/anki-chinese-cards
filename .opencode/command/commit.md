@@ -5,7 +5,7 @@ agent: build
 
 1. Run the npm test suite. If tests fail, abort. Report failures.
 2. Inspect `git status` and `git diff`.
-3. If any changes seem inconsistent or problematic, inform the user. Ask, if the user still wants to continue [y,n]
+3. If any changes seem inconsistent or problematic, inform the user. You may run the /ponytail-review command. Ask, if the user still wants to continue [y,n]
 4. If changes span unrelated concerns, split them into separate commits.
 5. Come up with commit messages for the commit(s). Format:
 
