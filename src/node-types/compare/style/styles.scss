@@ -1,7 +1,7 @@
-@import 'parts/card';
-@import 'parts/themes';
-@import 'parts/text';
-@import 'parts/spacing';
+@import '../../../style/card';
+@import '../../../style/themes';
+@import '../../../style/text';
+@import '../../../style/spacing';
 
 #content {
   line-height: 1.8rem;

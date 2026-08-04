@@ -1,7 +1,7 @@
-@import 'parts/card';
-@import 'parts/text';
-@import 'parts/spacing';
-@import 'parts/themes';
+@import '../../../style/card';
+@import '../../../style/text';
+@import '../../../style/spacing';
+@import '../../../style/themes';
 
 .button {
   border-radius: 0.3rem;
