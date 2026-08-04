@@ -7,14 +7,14 @@ const packageJson = require('./package.json');
 
 module.exports = {
     entry: {
-        listeningFront: './src/listening-front.ts',
-        listeningBack: './src/listening-back.ts',
-        writingFront: './src/writing-front.ts',
-        writingBack: './src/writing-back.ts',
-        compareFront: './src/compare-front.ts',
-        compareBack: './src/compare-back.ts',
-        vocabularyCardStyles: './src/style/vocabulary-card-styles.scss',
-        compareCardStyles: './src/style/compare-card-styles.scss',
+        'vocabulary/listeningFront': './src/node-types/vocabulary/listening-front.ts',
+        'vocabulary/listeningBack': './src/node-types/vocabulary/listening-back.ts',
+        'vocabulary/writingFront': './src/node-types/vocabulary/writing-front.ts',
+        'vocabulary/writingBack': './src/node-types/vocabulary/writing-back.ts',
+        'compare/compareFront': './src/node-types/compare/compare-front.ts',
+        'compare/compareBack': './src/node-types/compare/compare-back.ts',
+        'vocabulary/styles': './src/style/vocabulary-card-styles.scss',
+        'compare/styles': './src/style/compare-card-styles.scss',
     },
     module: {
         rules: [
@@ -41,39 +41,39 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/templates/listening-front.html',
-            filename: 'listening-front.html',
+            filename: 'vocabulary/listening-front.html',
             inject: 'body',
-            chunks: ['listeningFront'],
+            chunks: ['vocabulary/listeningFront'],
         }),
         new HtmlWebpackPlugin({
             template: './src/templates/listening-back.html',
-            filename: 'listening-back.html',
+            filename: 'vocabulary/listening-back.html',
             inject: 'body',
-            chunks: ['listeningBack'],
+            chunks: ['vocabulary/listeningBack'],
         }),
         new HtmlWebpackPlugin({
             template: './src/templates/writing-back.html',
-            filename: 'writing-back.html',
+            filename: 'vocabulary/writing-back.html',
             inject: 'body',
-            chunks: ['writingBack'],
+            chunks: ['vocabulary/writingBack'],
         }),
         new HtmlWebpackPlugin({
             template: './src/templates/writing-front.html',
-            filename: 'writing-front.html',
+            filename: 'vocabulary/writing-front.html',
             inject: 'body',
-            chunks: ['writingFront'],
+            chunks: ['vocabulary/writingFront'],
         }),
         new HtmlWebpackPlugin({
             template: './src/templates/compare.html',
-            filename: 'compare-front.html',
+            filename: 'compare/compare-front.html',
             inject: 'body',
-            chunks: ['compareFront'],
+            chunks: ['compare/compareFront'],
         }),
         new HtmlWebpackPlugin({
             template: './src/templates/compare.html',
-            filename: 'compare-back.html',
+            filename: 'compare/compare-back.html',
             inject: 'body',
-            chunks: ['compareBack'],
+            chunks: ['compare/compareBack'],
         }),
 
         new MiniCssExtractPlugin({
