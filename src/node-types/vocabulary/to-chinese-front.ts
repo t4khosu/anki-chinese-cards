@@ -1,12 +1,12 @@
-import ChineseVocabularyListeningCard from "./cards/ChineseVocabularyListeningCard";
+import ToChineseVocabularyCard from "./cards/ToChineseVocabularyCard";
 
-new ChineseVocabularyListeningCard({
+new ToChineseVocabularyCard({
     hanzi: `{{text:汉字}}`,
     exampleSentence1: `{{text:例子}}`,
-    exampleListeningRef1: `{{听力}}`,
+    exampleAudioRef1: `{{听力}}`,
     exampleSentence2: `{{text:例子2}}`,
-    exampleListeningRef2: `{{听力2}}`,
+    exampleAudioRef2: `{{听力2}}`,
     additionalInformation: `{{text:额外消息}}`,
     translations: `{{定义}}`,
     countwords: `{{text:量词}}`
-}).renderBack()
+}).renderFront()

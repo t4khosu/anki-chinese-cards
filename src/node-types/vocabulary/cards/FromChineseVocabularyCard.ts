@@ -1,6 +1,6 @@
-import ChineseVocabularyCard, {ExampleMode} from "./ChineseVocabularyCard";
+import VocabularyCard, {ExampleMode} from "./VocabularyCard";
 
-class ChineseVocabularyListeningCard extends ChineseVocabularyCard {
+class FromChineseVocabularyCard extends VocabularyCard {
     protected renderFrontCore(): void {
         this.appendExamples(ExampleMode.HIDE_SENTENCE, true);
         this.hideCountWordsIfUndefined();
@@ -16,4 +16,4 @@ class ChineseVocabularyListeningCard extends ChineseVocabularyCard {
     }
 }
 
-export default ChineseVocabularyListeningCard;
+export default FromChineseVocabularyCard;

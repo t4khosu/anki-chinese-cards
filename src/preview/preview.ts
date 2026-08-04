@@ -1,16 +1,16 @@
-import "../style/vocabulary-card-styles.scss";
-import frontTemplate from "../templates/writing-front.html";
-import backTemplate from "../templates/writing-back.html";
-import ChineseVocabularyWritingCard from "../node-types/vocabulary/cards/ChineseVocabularyWritingCard";
-import ChineseVocabularyCardFields from "../node-types/vocabulary/cards/ChineseVocabularyCardFields";
+import "../node-types/vocabulary/style/styles.scss";
+import frontTemplate from "../node-types/vocabulary/templates/to-chinese-front.html";
+import backTemplate from "../node-types/vocabulary/templates/to-chinese-back.html";
+import ToChineseVocabularyCard from "../node-types/vocabulary/cards/ToChineseVocabularyCard";
+import Fields from "../node-types/vocabulary/cards/Fields";
 
-const previewFields: ChineseVocabularyCardFields = {
+const previewFields: Fields = {
     hanzi: "图书馆",
     translations: "N: library",
     exampleSentence1: "我每天下午都去图书馆看书。",
     exampleSentence2: "这家图书馆藏书很丰富。",
-    exampleListeningRef1: "",
-    exampleListeningRef2: "",
+    exampleAudioRef1: "",
+    exampleAudioRef2: "",
     additionalInformation: "图书馆 refers to a public or private library.",
     countwords: "个，家"
 };
@@ -44,7 +44,7 @@ function render(side: "front" | "back") {
     const template = side === "front" ? frontTemplate : backTemplate;
     document.body.innerHTML = fillPlaceholders(template, previewValues);
 
-    const card = new ChineseVocabularyWritingCard(previewFields);
+    const card = new ToChineseVocabularyCard(previewFields);
     if (side === "front") {
         card.renderFront();
     } else {

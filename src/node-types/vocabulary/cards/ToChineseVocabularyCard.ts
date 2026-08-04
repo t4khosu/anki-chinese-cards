@@ -1,7 +1,7 @@
-import ChineseVocabularyCard, {ExampleMode} from "./ChineseVocabularyCard";
+import VocabularyCard, {ExampleMode} from "./VocabularyCard";
 import countCharacters from "../../../utils/countCharacters";
 
-class ChineseVocabularyWritingCard extends ChineseVocabularyCard {
+class ToChineseVocabularyCard extends VocabularyCard {
     protected renderFrontCore(): void {
         this.showNumberOfCharacters();
         this.parseTranslations();
@@ -29,4 +29,4 @@ class ChineseVocabularyWritingCard extends ChineseVocabularyCard {
     }
 }
 
-export default ChineseVocabularyWritingCard;
+export default ToChineseVocabularyCard;

@@ -6,7 +6,7 @@ const packageJson = require('./package.json');
 module.exports = {
     mode: 'development',
     entry: {
-        writingPreview: './src/preview/preview.ts',
+        toChinesePreview: './src/preview/preview.ts',
     },
     module: {
         rules: [
@@ -36,10 +36,10 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Writing Preview',
-            filename: 'writing-preview.html',
+            title: 'To Chinese Preview',
+            filename: 'to-chinese-preview.html',
             inject: 'body',
-            chunks: ['writingPreview'],
+            chunks: ['toChinesePreview'],
         }),
         new webpack.DefinePlugin({
             PACKAGE_VERSION: JSON.stringify(packageJson.version),
@@ -54,6 +54,6 @@ module.exports = {
         },
         hot: true,
         port: 8080,
-        open: ['/writing-preview.html'],
+        open: ['/to-chinese-preview.html'],
     },
 };

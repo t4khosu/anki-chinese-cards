@@ -1,6 +1,6 @@
 import Example from "./Example";
 import Card from "../../../Card";
-import ChineseVocabularyCardFields from "./ChineseVocabularyCardFields";
+import Fields from "./Fields";
 import parseTranslationsToUList from "../../../utils/parseTranslationsToUList";
 
 enum ExampleMode {
@@ -12,10 +12,10 @@ enum ExampleMode {
 
 declare const PACKAGE_VERSION: string;
 
-abstract class ChineseVocabularyCard extends Card {
-    protected fields: ChineseVocabularyCardFields;
+abstract class VocabularyCard extends Card {
+    protected fields: Fields;
 
-    constructor(fields: ChineseVocabularyCardFields) {
+    constructor(fields: Fields) {
         super();
         this.fields = fields;
     }
@@ -23,13 +23,13 @@ abstract class ChineseVocabularyCard extends Card {
     protected appendExamples(mode: ExampleMode, showSound: boolean) {
         const example1: Example = {
             sentence: this.fields.exampleSentence1,
-            soundRef: this.fields.exampleListeningRef1,
+            soundRef: this.fields.exampleAudioRef1,
             hanzi: this.fields.hanzi,
         }
 
         const example2: Example = {
             sentence: this.fields.exampleSentence2,
-            soundRef: this.fields.exampleListeningRef2,
+            soundRef: this.fields.exampleAudioRef2,
             hanzi: this.fields.hanzi,
         }
 
@@ -120,5 +120,5 @@ abstract class ChineseVocabularyCard extends Card {
     }
 }
 
-export default ChineseVocabularyCard;
+export default VocabularyCard;
 export {ExampleMode}

@@ -7,14 +7,14 @@ const packageJson = require('./package.json');
 
 module.exports = {
     entry: {
-        'vocabulary/listeningFront': './src/node-types/vocabulary/listening-front.ts',
-        'vocabulary/listeningBack': './src/node-types/vocabulary/listening-back.ts',
-        'vocabulary/writingFront': './src/node-types/vocabulary/writing-front.ts',
-        'vocabulary/writingBack': './src/node-types/vocabulary/writing-back.ts',
+        'vocabulary/fromChineseFront': './src/node-types/vocabulary/from-chinese-front.ts',
+        'vocabulary/fromChineseBack': './src/node-types/vocabulary/from-chinese-back.ts',
+        'vocabulary/toChineseFront': './src/node-types/vocabulary/to-chinese-front.ts',
+        'vocabulary/toChineseBack': './src/node-types/vocabulary/to-chinese-back.ts',
         'compare/compareFront': './src/node-types/compare/compare-front.ts',
         'compare/compareBack': './src/node-types/compare/compare-back.ts',
-        'vocabulary/styles': './src/style/vocabulary-card-styles.scss',
-        'compare/styles': './src/style/compare-card-styles.scss',
+        'vocabulary/styles': './src/node-types/vocabulary/style/styles.scss',
+        'compare/styles': './src/node-types/compare/style/styles.scss',
     },
     module: {
         rules: [
@@ -40,37 +40,37 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/templates/listening-front.html',
-            filename: 'vocabulary/listening-front.html',
+            template: './src/node-types/vocabulary/templates/from-chinese-front.html',
+            filename: 'vocabulary/from-chinese-front.html',
             inject: 'body',
-            chunks: ['vocabulary/listeningFront'],
+            chunks: ['vocabulary/fromChineseFront'],
         }),
         new HtmlWebpackPlugin({
-            template: './src/templates/listening-back.html',
-            filename: 'vocabulary/listening-back.html',
+            template: './src/node-types/vocabulary/templates/from-chinese-back.html',
+            filename: 'vocabulary/from-chinese-back.html',
             inject: 'body',
-            chunks: ['vocabulary/listeningBack'],
+            chunks: ['vocabulary/fromChineseBack'],
         }),
         new HtmlWebpackPlugin({
-            template: './src/templates/writing-back.html',
-            filename: 'vocabulary/writing-back.html',
+            template: './src/node-types/vocabulary/templates/to-chinese-back.html',
+            filename: 'vocabulary/to-chinese-back.html',
             inject: 'body',
-            chunks: ['vocabulary/writingBack'],
+            chunks: ['vocabulary/toChineseBack'],
         }),
         new HtmlWebpackPlugin({
-            template: './src/templates/writing-front.html',
-            filename: 'vocabulary/writing-front.html',
+            template: './src/node-types/vocabulary/templates/to-chinese-front.html',
+            filename: 'vocabulary/to-chinese-front.html',
             inject: 'body',
-            chunks: ['vocabulary/writingFront'],
+            chunks: ['vocabulary/toChineseFront'],
         }),
         new HtmlWebpackPlugin({
-            template: './src/templates/compare.html',
+            template: './src/node-types/compare/templates/compare.html',
             filename: 'compare/compare-front.html',
             inject: 'body',
             chunks: ['compare/compareFront'],
         }),
         new HtmlWebpackPlugin({
-            template: './src/templates/compare.html',
+            template: './src/node-types/compare/templates/compare.html',
             filename: 'compare/compare-back.html',
             inject: 'body',
             chunks: ['compare/compareBack'],
