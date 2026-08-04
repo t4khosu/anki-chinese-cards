@@ -1,7 +1,7 @@
 import Example from "./Example";
-import Card from "../Card";
+import Card from "../../../Card";
 import ChineseVocabularyCardFields from "./ChineseVocabularyCardFields";
-import parseTranslationsToUList from "../../utils/parseTranslationsToUList";
+import parseTranslationsToUList from "../../../utils/parseTranslationsToUList";
 
 enum ExampleMode {
     HIDE_SENTENCE,

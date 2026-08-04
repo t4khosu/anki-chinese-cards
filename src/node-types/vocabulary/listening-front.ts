@@ -1,4 +1,4 @@
-import ChineseVocabularyListeningCard from "./cards/chineseVocabularyCards/ChineseVocabularyListeningCard";
+import ChineseVocabularyListeningCard from "./cards/ChineseVocabularyListeningCard";
 
 new ChineseVocabularyListeningCard({
     hanzi: `{{text:汉字}}`,

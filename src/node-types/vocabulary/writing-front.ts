@@ -1,4 +1,4 @@
-import ChineseVocabularyWritingCard from "./cards/chineseVocabularyCards/ChineseVocabularyWritingCard";
+import ChineseVocabularyWritingCard from "./cards/ChineseVocabularyWritingCard";
 
 new ChineseVocabularyWritingCard({
     hanzi: `{{text:汉字}}`,

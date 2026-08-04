@@ -1,4 +1,4 @@
-import Card from "../Card";
+import Card from "../../../Card";
 import CompareEntry from "./CompareEntries";
 
 class ChineseCompareCard extends Card {

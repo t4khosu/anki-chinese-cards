@@ -1,8 +1,8 @@
 import "../style/vocabulary-card-styles.scss";
 import frontTemplate from "../templates/writing-front.html";
 import backTemplate from "../templates/writing-back.html";
-import ChineseVocabularyWritingCard from "../cards/chineseVocabularyCards/ChineseVocabularyWritingCard";
-import ChineseVocabularyCardFields from "../cards/chineseVocabularyCards/ChineseVocabularyCardFields";
+import ChineseVocabularyWritingCard from "../node-types/vocabulary/cards/ChineseVocabularyWritingCard";
+import ChineseVocabularyCardFields from "../node-types/vocabulary/cards/ChineseVocabularyCardFields";
 
 const previewFields: ChineseVocabularyCardFields = {
     hanzi: "图书馆",

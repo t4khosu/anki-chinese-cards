@@ -6,7 +6,7 @@ const packageJson = require('./package.json');
 module.exports = {
     mode: 'development',
     entry: {
-        writingPreview: './src/preview/writing-preview.ts',
+        writingPreview: './src/preview/preview.ts',
     },
     module: {
         rules: [

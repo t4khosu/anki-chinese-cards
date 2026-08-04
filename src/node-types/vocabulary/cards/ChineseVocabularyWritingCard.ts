@@ -1,5 +1,5 @@
 import ChineseVocabularyCard, {ExampleMode} from "./ChineseVocabularyCard";
-import countCharacters from "../../utils/countCharacters";
+import countCharacters from "../../../utils/countCharacters";
 
 class ChineseVocabularyWritingCard extends ChineseVocabularyCard {
     protected renderFrontCore(): void {

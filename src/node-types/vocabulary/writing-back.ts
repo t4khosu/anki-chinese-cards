@@ -1,6 +1,6 @@
-import ChineseVocabularyListeningCard from "./cards/chineseVocabularyCards/ChineseVocabularyListeningCard";
+import ChineseVocabularyWritingCard from "./cards/ChineseVocabularyWritingCard";
 
-new ChineseVocabularyListeningCard({
+new ChineseVocabularyWritingCard({
     hanzi: `{{text:汉字}}`,
     exampleSentence1: `{{text:例子}}`,
     exampleListeningRef1: `{{听力}}`,
