@@ -26,7 +26,7 @@ const previewFields: Fields = {
 const previewValues: Record<string, string> = {
     "汉字": "图书馆",
     "量词": "个",
-    "拼音": "t2shu1guan3",
+    "拼音": "tu2shu1guan3",
     "额外消息": "refers to a public or private library.",
 };
 
