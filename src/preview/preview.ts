@@ -32,8 +32,8 @@ const previewValues: Record<string, string> = {
     "量词": "个",
     "拼音": "tu2shu1guan3",
     "额外消息": "refers to a public or private library.",
-    "Vorderseite": "library",
-    "Rückseite": "图书馆",
+    "To Translate": "library",
+    "Translation": "图书馆",
 };
 
 type CardConfig = { label: string; front: string; back: string; cls: any; fields?: any };
