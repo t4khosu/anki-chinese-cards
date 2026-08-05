@@ -1,16 +1,20 @@
 import "../node-types/vocabulary/style/styles.scss";
+import "../node-types/translate/style/styles.scss";
 import "./preview.scss";
 import previewTemplate from "./preview.html";
 import toFrontTemplate from "../node-types/vocabulary/templates/to-chinese-front.html";
 import toBackTemplate from "../node-types/vocabulary/templates/to-chinese-back.html";
 import fromFrontTemplate from "../node-types/vocabulary/templates/from-chinese-front.html";
 import fromBackTemplate from "../node-types/vocabulary/templates/from-chinese-back.html";
+import translateFrontTemplate from "../node-types/translate/templates/translate-front.html";
+import translateBackTemplate from "../node-types/translate/templates/translate-back.html";
 import ToChineseVocabularyCard from "../node-types/vocabulary/cards/ToChineseVocabularyCard";
 import FromChineseVocabularyCard from "../node-types/vocabulary/cards/FromChineseVocabularyCard";
 import VocabularyCard from "../node-types/vocabulary/cards/VocabularyCard";
+import TranslateCard from "../node-types/translate/cards/TranslateCard";
 import Fields from "../node-types/vocabulary/cards/Fields";
 
-type CardType = "to-chinese" | "from-chinese";
+type CardType = "to-chinese" | "from-chinese" | "translate";
 
 const previewFields: Fields = {
     hanzi: "图书馆",
@@ -28,11 +32,16 @@ const previewValues: Record<string, string> = {
     "量词": "个",
     "拼音": "tu2shu1guan3",
     "额外消息": "refers to a public or private library.",
+    "Vorderseite": "library",
+    "Rückseite": "图书馆",
 };
 
-const cardConfig: Record<CardType, { label: string; front: string; back: string; cls: new (fields: Fields) => VocabularyCard }> = {
-    "to-chinese": { label: "To Chinese", front: toFrontTemplate, back: toBackTemplate, cls: ToChineseVocabularyCard },
-    "from-chinese": { label: "From Chinese", front: fromFrontTemplate, back: fromBackTemplate, cls: FromChineseVocabularyCard },
+type CardConfig = { label: string; front: string; back: string; cls: any; fields?: any };
+
+const cardConfig: Record<CardType, CardConfig> = {
+    "to-chinese": { label: "To Chinese", front: toFrontTemplate, back: toBackTemplate, cls: ToChineseVocabularyCard, fields: previewFields },
+    "from-chinese": { label: "From Chinese", front: fromFrontTemplate, back: fromBackTemplate, cls: FromChineseVocabularyCard, fields: previewFields },
+    "translate": { label: "Translate", front: translateFrontTemplate, back: translateBackTemplate, cls: TranslateCard, fields: { front: "library" } },
 };
 
 let currentCard: CardType = "to-chinese";
@@ -45,11 +54,11 @@ function fillPlaceholders(html: string, values: Record<string, string>): string 
     });
 }
 
-function renderSide(template: string, cls: new (fields: Fields) => VocabularyCard, side: "front" | "back"): HTMLElement {
+function renderSide(template: string, cls: any, side: "front" | "back", fields: any): HTMLElement {
     const box = document.createElement("div");
     box.innerHTML = fillPlaceholders(template, previewValues);
     document.body.append(box);
-    const card = new cls(previewFields);
+    const card = new cls(fields);
     if (side === "front") card.renderFront();
     else card.renderBack();
     box.remove();
@@ -114,8 +123,8 @@ function render(cardType: CardType) {
 
     const cfg = cardConfig[cardType];
     stage.innerHTML = "";
-    const frontBox = renderSide(cfg.front, cfg.cls, "front");
-    const backBox = renderSide(cfg.back, cfg.cls, "back");
+    const frontBox = renderSide(cfg.front, cfg.cls, "front", cfg.fields ?? previewFields);
+    const backBox = renderSide(cfg.back, cfg.cls, "back", cfg.fields ?? previewFields);
     frontBox.style.marginBottom = "1rem";
     stage.append(frontBox, backBox);
 }

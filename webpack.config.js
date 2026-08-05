@@ -15,6 +15,9 @@ module.exports = {
         'compare/compareBack': './src/node-types/compare/compare-back.ts',
         'vocabulary/styles': './src/node-types/vocabulary/style/styles.scss',
         'compare/styles': './src/node-types/compare/style/styles.scss',
+        'translate/translateFront': './src/node-types/translate/translate-front.ts',
+        'translate/translateBack': './src/node-types/translate/translate-back.ts',
+        'translate/styles': './src/node-types/translate/style/styles.scss',
     },
     module: {
         rules: [
@@ -74,6 +77,18 @@ module.exports = {
             filename: 'compare/compare-back.html',
             inject: 'body',
             chunks: ['compare/compareBack'],
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/node-types/translate/templates/translate-front.html',
+            filename: 'translate/translate-front.html',
+            inject: 'body',
+            chunks: ['translate/translateFront'],
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/node-types/translate/templates/translate-back.html',
+            filename: 'translate/translate-back.html',
+            inject: 'body',
+            chunks: ['translate/translateBack'],
         }),
 
         new MiniCssExtractPlugin({
