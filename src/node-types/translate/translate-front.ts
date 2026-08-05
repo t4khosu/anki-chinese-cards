@@ -1,3 +1,3 @@
 import TranslateCard from "./cards/TranslateCard";
 
-new TranslateCard({ toTranslate: `{{To Translate}}`, restriction: `{{Restriction}}` }).renderFront()
+new TranslateCard({ toTranslate: `{{To Translate}}`, restriction: `{{Restriction}}`, explanation: `{{Explanation}}` }).renderFront()

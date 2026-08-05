@@ -34,6 +34,7 @@ const previewValues: Record<string, string> = {
     "额外消息": "refers to a public or private library.",
     "To Translate": "library",
     "Restriction": "formal context only",
+    "Explanation": "图书馆 refers to a public or private library.",
     "Translation": "图书馆",
 };
 
@@ -42,7 +43,7 @@ type CardConfig = { label: string; front: string; back: string; cls: any; fields
 const cardConfig: Record<CardType, CardConfig> = {
     "to-chinese": { label: "To Chinese", front: toFrontTemplate, back: toBackTemplate, cls: ToChineseVocabularyCard, fields: previewFields },
     "from-chinese": { label: "From Chinese", front: fromFrontTemplate, back: fromBackTemplate, cls: FromChineseVocabularyCard, fields: previewFields },
-    "translate": { label: "Translate", front: translateFrontTemplate, back: translateBackTemplate, cls: TranslateCard, fields: { toTranslate: "library", restriction: "formal context only" } },
+    "translate": { label: "Translate", front: translateFrontTemplate, back: translateBackTemplate, cls: TranslateCard, fields: { toTranslate: "library", restriction: "formal context only", explanation: "图书馆 refers to a public or private library." } },
 };
 
 let currentCard: CardType = "to-chinese";
