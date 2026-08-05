@@ -15,7 +15,7 @@ type CardType = "to-chinese" | "from-chinese";
 const previewFields: Fields = {
     hanzi: "图书馆",
     translations: "N: library",
-    exampleSentence1: "我每天下午都去图书馆看书。",
+    exampleSentence1: "我{{每}}天下午都去图书馆看书。",
     exampleSentence2: "这家图书馆藏书很丰富。",
     exampleAudioRef1: "",
     exampleAudioRef2: "",
