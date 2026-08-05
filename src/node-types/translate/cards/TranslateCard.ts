@@ -1,9 +1,9 @@
 import Card from "../../../Card";
 
 class TranslateCard extends Card {
-    protected fields: { toTranslate: string };
+    protected fields: { toTranslate: string; restriction: string };
 
-    constructor(fields: { toTranslate: string }) {
+    constructor(fields: { toTranslate: string; restriction: string }) {
         super();
         this.fields = fields;
     }
