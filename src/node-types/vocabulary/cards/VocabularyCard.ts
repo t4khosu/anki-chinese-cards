@@ -2,6 +2,7 @@ import Example from "./Example";
 import Card from "../../../Card";
 import Fields from "./Fields";
 import parseTranslationsToUList from "../../../utils/parseTranslationsToUList";
+import processManualMarks from "../../../utils/processManualMarks";
 
 enum ExampleMode {
     HIDE_SENTENCE,
@@ -101,21 +102,24 @@ abstract class VocabularyCard extends Card {
     }
 
     private showSentenceShowHanzi(example: Example, li: HTMLElement): HTMLElement {
-        li.innerHTML += example.sentence;
+        li.innerHTML += processManualMarks(example.sentence, false);
         return li;
     }
 
     private showSentenceHideHanzi(example: Example, li: HTMLElement): HTMLElement {
+        const sentence = processManualMarks(example.sentence, true);
         if (example.hanzi.length !== 0) {
             const underscores = '__ '.repeat(example.hanzi.length);
-            li.innerHTML += example.sentence.split(example.hanzi).join(underscores);
+            li.innerHTML += sentence.split(example.hanzi).join(underscores);
+        } else {
+            li.innerHTML += sentence;
         }
         return li;
     }
 
     private showSentenceHighlightHanzi(example: Example, li: HTMLElement): HTMLElement {
         const highlightedSpan = '<span class="font-bold">' + example.hanzi + '</span>'
-        li.innerHTML += example.sentence.split(example.hanzi).join(highlightedSpan);
+        li.innerHTML += processManualMarks(example.sentence, false).split(example.hanzi).join(highlightedSpan);
         return li;
     }
 }
