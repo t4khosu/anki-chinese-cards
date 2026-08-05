@@ -1,0 +1,43 @@
+html, body {
+    margin: 0;
+}
+
+#preview-split {
+    display: flex;
+    gap: 0;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+#preview-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 0 0 auto;
+    width: 180px;
+    box-sizing: border-box;
+    padding: 0.75rem;
+    overflow: auto;
+}
+
+#preview-gutter {
+    flex: 0 0 6px;
+    cursor: col-resize;
+    background: #999;
+    position: relative;
+}
+
+#preview-stage {
+    flex: 1 1 auto;
+    overflow: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+#preview-sidebar button {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    border: 1px solid #999;
+}
