@@ -1,5 +1,7 @@
-export default function processManualMarks(sentence: string, hide: boolean): string {
+export default function processManualMarks(sentence: string, mode: "hide" | "show" | "highlight"): string {
     return sentence.replace(/\{\{([^}]+)\}\}/g, (_, chars) => {
-        return hide ? '__ '.repeat(chars.length) : chars;
+        if (mode === "hide") return '__ '.repeat(chars.length);
+        if (mode === "highlight") return `<span class="font-bold">${chars}</span>`;
+        return chars;
     });
 }

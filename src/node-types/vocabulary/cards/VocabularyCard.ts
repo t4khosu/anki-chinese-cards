@@ -102,12 +102,12 @@ abstract class VocabularyCard extends Card {
     }
 
     private showSentenceShowHanzi(example: Example, li: HTMLElement): HTMLElement {
-        li.innerHTML += processManualMarks(example.sentence, false);
+        li.innerHTML += processManualMarks(example.sentence, "show");
         return li;
     }
 
     private showSentenceHideHanzi(example: Example, li: HTMLElement): HTMLElement {
-        const sentence = processManualMarks(example.sentence, true);
+        const sentence = processManualMarks(example.sentence, "hide");
         if (example.hanzi.length !== 0) {
             const underscores = '__ '.repeat(example.hanzi.length);
             li.innerHTML += sentence.split(example.hanzi).join(underscores);
@@ -119,7 +119,7 @@ abstract class VocabularyCard extends Card {
 
     private showSentenceHighlightHanzi(example: Example, li: HTMLElement): HTMLElement {
         const highlightedSpan = '<span class="font-bold">' + example.hanzi + '</span>'
-        li.innerHTML += processManualMarks(example.sentence, false).split(example.hanzi).join(highlightedSpan);
+        li.innerHTML += processManualMarks(example.sentence, "highlight").split(example.hanzi).join(highlightedSpan);
         return li;
     }
 }
