@@ -1,9 +1,37 @@
 VALID_TAGS="feat|fix|refactor|chore|perf|ci|ops|build|docs|style|revert|test"
 MSG="$(head -1 "$1")"
+
 if ! echo "$MSG" | grep -qE "^($VALID_TAGS): .+"; then
   echo "ERROR: Commit message must start with a valid tag."
   echo "Valid tags: feat, fix, refactor, chore, perf, ci, ops, build, docs, style, revert, test"
   echo "Format: <tag>: <description>"
   echo "Got: $MSG"
   exit 1
+fi
+
+if [ ${#MSG} -gt 50 ]; then
+  echo "ERROR: Commit title must be 50 characters or less (got ${#MSG})."
+  exit 1
+fi
+
+if [ -s "$1" ] && [ "$(wc -l < "$1")" -ge 2 ]; then
+  LINE2="$(sed -n '2p' "$1")"
+  if [ -n "$LINE2" ]; then
+    echo "ERROR: Second line must be empty (blank line after title)."
+    exit 1
+  fi
+fi
+
+BODY="$(tail -n +3 "$1")"
+if [ -n "$BODY" ]; then
+  echo "$BODY" | while IFS= read -r line; do
+    if [ ${#line} -gt 72 ]; then
+      echo "ERROR: Body lines must be 72 chars or less (got ${#line}):"
+      echo "  $line"
+      exit 1
+    fi
+  done
+  if [ $? -ne 0 ]; then
+    exit 1
+  fi
 fi
