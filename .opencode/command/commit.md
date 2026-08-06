@@ -3,11 +3,9 @@ description: Commit changes following repo conventions (conventional tags, split
 agent: build
 ---
 
-1. Inspect `git status` and `git diff`.
-3. If any changes seem inconsistent or problematic, inform the user. You may run the /ponytail-review command. Ask, if the user still wants to continue [y,n]
-4. If changes span unrelated concerns, split them into separate commits.
-5. Come up with commit messages for the commit(s). Format:
-
+1. use `git diff` to get current changes.
+2. group same concerns within individual commits.
+3. formulate commit message(s) for the commit(s) with the following format:
 ```
 <tag>: <description>
 
@@ -16,7 +14,7 @@ agent: build
 - ...
 ```
 
-Commit tags: `feat` (new feature), `fix` (bug fix), `refactor` (restructure, no bug/feature), `chore` (non-src/test), `perf` (performance), `ci` (CI), `ops` (infra/deploy), `build` (build system/deps), `docs` (documentation), `style` (formatting), `revert` (revert), `test` (tests).
+Valid tags: `feat` (new feature), `fix` (bug fix), `refactor` (restructure, no bug/feature), `chore` (non-src/test), `perf` (performance), `ci` (CI), `ops` (infra/deploy), `build` (build system/deps), `docs` (documentation), `style` (formatting), `revert` (revert), `test` (tests).
 
-6. Propose the commit message(s) and affected files to the user. The user can approve or abort [y,n]
-7. Stage the appropriate files and commit. If splitting, repeat per logical group.
+4. display planned commits to the user. The user must approve [y,n]
+7. stage and commit. Use `git add` to add whole files are partial files. Repeat for all commits.
